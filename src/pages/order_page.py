@@ -1,7 +1,7 @@
 from src.pages.base_page import BasePage
 
 
-class HomePageSectionQuestion(BasePage):
+class OrderPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -14,7 +14,7 @@ class HomePageSectionQuestion(BasePage):
     def click_for_element(self, locator):
         return self.find_element_to_click(locator)
 
-    def scroll_to_question(self, locator):
+    def scroll_to_station(self, locator):
         return self.scroll_to_element(locator)
 
     def wait_for_clickable(self, locator):

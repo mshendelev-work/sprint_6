@@ -1,6 +1,6 @@
 import allure
-from selenium.webdriver import ActionChains
-from selenium.webdriver.chrome.webdriver import WebDriver
+
+from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -17,35 +17,26 @@ class BasePage:
         with allure.step(f'Find element with locator: {locator}'):
             return WebDriverWait(self.driver, timeout).until(
                 EC.presence_of_element_located(locator)
-                )
+            )
 
-    def find_elements(self, locator, timeout=10):
-        with allure.step(f'Find elements with locator: {locator}'):
-            return WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_all_elements_located(locator)
-                )
-
-    def click_element(self, locator, timeout=10):
+    def find_element_to_click(self, locator, timeout=10):
         with allure.step(f'Click element with locator: {locator}'):
             self.find_element(locator, timeout).click()
 
-    def enter_text(self, locator, text, timeout=10):
+    def find_element_enter_text(self, locator, text, timeout=10):
         with allure.step(f'Enter text with locator: {locator}'):
             self.find_element(locator, timeout).send_keys(text)
 
-    def wait_for_element_visible(self, locator, timeout=10):
-        with allure.step(f'Wait for element is visible and clickable with locator: {locator}'):
+    def find_element_to_be_clickable(self, locator, timeout=10):
+        with allure.step(f'Wait for the element to be clickable with locator: {locator}'):
             return WebDriverWait(self.driver, timeout).until(
-                    EC.visibility_of_element_located(locator)
-                )
+                    EC.element_to_be_clickable(locator)
+            )
 
-    def element_is_present(self, locator, timeout=10):
-        with allure.step(f'Wait presence for element with locator: {locator}'):
-            return WebDriverWait(self.driver, timeout).until(
-                    EC.presence_of_element_located(locator)
-                )
-
-    def scroll_to_element(self, locator, timeout=10):
+    def scroll_to_element(self, locator):
         with allure.step(f'Scroll to element with locator: {locator}'):
-            element = self.find_element(locator)
-            ActionChains(self.driver, timeout).move_to_element(element).perform()
+            return self.driver.execute_script("arguments[0].scrollIntoView();", locator)
+
+    def switch_to_window(self):
+        window_new = self.driver.window_handles[1]
+        return self.driver.switch_to.window(window_new)
