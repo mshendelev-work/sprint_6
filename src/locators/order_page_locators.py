@@ -16,7 +16,7 @@ class OrderPageLocators:
     CHOOSE_RENTAL_PERIOD_TWO_DAYS = By.XPATH, './/div[text()="двое суток"]'  # Поле для выбора срока аренды двое суток
     CHOOSE_RENTAL_PERIOD_FOUR_DAYS = By.XPATH, './/div[text()="двое суток"]'  # Поле для выбора срока аренды четверо суток
     CHOOSE_BLACK_COLOR_SCOOTER = By.XPATH, './/label[@class="Checkbox_Label__3wxSf"][1]' # Чек-бокс с черным цветом
-    CHOOSE_BLACK_GREY_SCOOTER = By.XPATH, './/label[@class="Checkbox_Label__3wxSf"][2]'  # Чек-бокс с серым цветом
+    CHOOSE_GREY_COLOR_SCOOTER = By.XPATH, './/label[@class="Checkbox_Label__3wxSf"][2]'  # Чек-бокс с серым цветом
     INPUT_COMMENT_FOR_COURIER = By.XPATH, './/input[@placeholder="Комментарий для курьера"]'  # Поле для ввода
                                                                                 # комментария для курьера
     BUTTON_FURTHER = By.XPATH, ('.//div[@class="Order_NextButton__1_rCA"]/button'
