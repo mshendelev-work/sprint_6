@@ -6,7 +6,7 @@ from src.locators.home_page_locators import HomePageLocators
 from src.pages.base_page import BasePage
 
 
-class OrderPage(BasePage):
+class HomePageHeader(BasePage):
     @allure.step('Наследование драйвера')
     def __init__(self, driver):
         super().__init__(driver)
